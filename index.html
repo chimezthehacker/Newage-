@@ -1,814 +1,435 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newage Onrender | Institutional Investment & Asset Management</title>
-  <meta name="description" content="Newage Onrender is a modern investment and asset management platform focused on equities, infrastructure, free energy innovation, and digital assets for companies seeking long‑term capital growth." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Marketplace | Newage Asset Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; }
+        #sidebar { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: #1e1b4b; }
+        .sidebar-closed { transform: translateX(-100%); }
+        .sidebar-open { transform: translateX(0); }
+        .glass-header { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.9); }
+        .feature-gradient { background: linear-gradient(135deg, #4338ca 0%, #7c3aed 100%); }
+        .stat-label { font-size: 9px; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; }
+        .investment-card:hover { transform: translateY(-5px); border-color: #6366f1; }
+    </style>
+</head>
+<body class="text-slate-800">
 
-<!-- Open Graph / WhatsApp Preview -->
-<meta property="og:title" content="Newage Onrender | Institutional Investment & Asset Management">
-<meta property="og:description" content="Modern institutional investment and asset management platform focused on long-term capital growth, digital assets, and infrastructure innovation.">
-<meta property="og:image" content="https://i.ibb.co/JWffVZqf/image.jpg">
-<meta property="og:url" content="https://invest.onrender.com">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Newage Onrender">
+    <!-- OVERLAY -->
+    <div id="overlay" class="fixed inset-0 bg-indigo-950/40 z-40 hidden" onclick="toggleSidebar()"></div>
 
-<!-- Twitter / Large Preview -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Newage Onrender | Institutional Investment & Asset Management">
-<meta name="twitter:description" content="Institutional-grade investment and asset management platform.">
-<meta name="twitter:image" content="https://i.ibb.co/JWffVZqf/image.jpg">
+  <!-- SIDEBAR (Colourful Deep Indigo) -->
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 text-indigo-100 z-50 sidebar-closed shadow-2xl">
+    <div class="p-6 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-10">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center font-bold text-white">NO</div>
+                <span class="text-xl font-bold text-white tracking-tight">Newage Onrender</span>
+            </div>
+            <button onclick="toggleSidebar()" class="text-indigo-300 hover:text-white lg:hidden">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <nav class="space-y-2 flex-1">
+            <a href="https://newagedashboard.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl bg-indigo-800/50 text-white font-medium shadow-sm">
+                <i class="fa-solid fa-house-chimney w-5 text-indigo-400"></i> <span>Dashboard</span>
+            </a>
+            <a href="https://newageportfolio.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 hover:text-white transition">
+                <i class="fa-solid fa-briefcase w-5"></i> <span>Portfolio</span>
+            </a>
+            <a href="https://newageinvestment.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 hover:text-white transition">
+                <i class="fa-solid fa-receipt w-5"></i> <span>Investment plans</span>
+            </a>
+            <a href="https://newagefunding.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 hover:text-white transition">
+                <i class="fa-solid fa-wallet w-5"></i> <span>Funding</span>
+            </a>
+            <a href="https://newagewithdrawal.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 hover:text-white transition">
+                <i class="fa-solid fa-money-bill-transfer w-5"></i> <span>Withdrawal</span>
+            </a>
+            <a href="https://newagetransaction.onrender.com" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 hover:text-white transition">
+                <i class="fa-solid fa-gem w-5"></i> <span>Transaction</span>
+            </a>
+        </nav>
 
-  <!-- Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">  <style>
-    /* ==========================================================
-       GLOBAL RESET & VARIABLES
-       ========================================================== */
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray-100: #f5f5f5;
-      --gray-200: #e5e5e5;
-      --gray-300: #cccccc;
-      --gray-600: #666666;
-      --gray-800: #1a1a1a;
-      --accent: #ffffff;
-      --overlay: rgba(0, 0, 0, 0.6);
-      --transition-fast: 0.3s ease;
-      --transition-slow: 0.7s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--white);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    section {
-      padding: 120px 8%;
-      position: relative;
-    }
-
-    h1, h2, h3, h4 {
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    p {
-      color: var(--gray-300);
-      font-size: 16px;
-    }
-
-    /* ==========================================================
-       NAVIGATION
-       ========================================================== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 8%;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .nav ul {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-    }
-
-    .nav ul li a {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-    }
-
-    .nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--white);
-      transition: var(--transition-fast);
-    }
-
-    .nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* ==========================================================
-       HERO SECTION
-       ========================================================== */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--overlay);
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 900px;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      margin-bottom: 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 40px;
-      border: 1px solid var(--white);
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 2px;
-      transition: var(--transition-fast);
-    }
-
-    .btn:hover {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    /* ==========================================================
-       ABOUT SECTION
-       ========================================================== */
-    .about {
-      background: var(--black);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about h2 {
-      font-size: 42px;
-      margin-bottom: 30px;
-    }
-
-    /* ==========================================================
-       INVESTMENT AREAS
-       ========================================================== */
-    .areas {
-      background: var(--gray-800);
-    }
-
-    .area-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .area-card {
-      position: relative;
-      padding: 60px 40px;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: var(--transition-fast);
-      overflow: hidden;
-    }
-
-    .area-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.05), transparent);
-      opacity: 0;
-      transition: var(--transition-fast);
-    }
-
-    .area-card:hover::before {
-      opacity: 1;
-    }
-
-    .area-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .area-card h3 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    /* ==========================================================
-       INFRASTRUCTURE PARALLAX
-       ========================================================== */
-    .parallax {
-      background: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-      text-align: center;
-    }
-
-    .parallax::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--overlay);
-    }
-
-    .parallax-content {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .parallax h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    /* ==========================================================
-       ASSET MANAGEMENT
-       ========================================================== */
-    .assets {
-      background: var(--black);
-    }
-
-    .timeline {
-      border-left: 1px solid rgba(255,255,255,0.2);
-      padding-left: 40px;
-    }
-
-    .timeline-item {
-      margin-bottom: 60px;
-    }
-
-    .timeline-item h4 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    /* ==========================================================
-       CRYPTO & DIGITAL ASSETS
-       ========================================================== */
-    .crypto {
-      background: var(--gray-800);
-    }
-
-    .crypto-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 50px;
-    }
-
-    /* ==========================================================
-       CLIENTS / COMPANIES
-       ========================================================== */
-    .clients {
-      background: var(--black);
-    }
-
-    .logos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 60px;
-      align-items: center;
-      opacity: 0.7;
-    }
-
-    /* ==========================================================
-       CTA
-       ========================================================== */
-    .cta {
-      background: var(--white);
-      color: var(--black);
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: 48px;
-      margin-bottom: 30px;
-    }
-
-    .cta p {
-      color: #333;
-      max-width: 700px;
-      margin: auto auto 40px;
-    }
-
-    .cta .btn {
-      border-color: var(--black);
-    }
-
-    .cta .btn:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    /* ==========================================================
-       FOOTER
-       ========================================================== */
-    footer {
-      background: #000;
-      padding: 80px 8% 40px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 60px;
-      margin-bottom: 40px;
-    }
-
-    footer h4 {
-      margin-bottom: 20px;
-    }
-
-    footer p {
-      font-size: 14px;
-    }
-
-    .copyright {
-      text-align: center;
-      font-size: 13px;
-      color: #777;
-    }
-
-    /* ==========================================================
-       ANIMATIONS
-       ========================================================== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: var(--transition-slow);
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==========================================================
-       RESPONSIVE
-       ========================================================== */
-    @media (max-width: 900px) {
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style></head>
-<body>  <!-- ================= NAV ================= -->  <header>
-    <nav class="nav">
-      <div class="logo">NEWAGE ONRENDER</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#areas">Investments</a></li>
-        <li><a href="#assets">Assets</a></li>
-        <li><a href="#crypto">Digital</a></li>
-        <li><a href="https://wa.me/18128023489">Contact</a></li>
-      </ul>
-    </nav>
-  </header>  <!-- ================= HERO ================= -->  <section class="hero">
-    <div class="hero-content fade-up">
-      <h1>Capital for the Next Economic Era</h1>
-      <p>
-        Newage Onrender is an institutional‑grade investment and asset management platform
-        designed for companies seeking sustainable growth through equities, infrastructure,
-        free‑energy innovation, and digital assets.
-      </p>
-      <a href="https://signin.onrender.com" class="btn" target="_blank" rel="noopener noreferrer">Get started</a>
+        <div class="pt-6 border-t border-indigo-800/50">
+            <a href="https://wa.me/18128023489" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-indigo-800/30 text-indigo-200 transition">
+                <i class="fa-solid fa-headset w-5"></i> <span>Support</span>
+            </a>
+            <a href="https://facebook.co" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-red-500/20 text-red-400 transition mt-2">
+                <i class="fa-solid fa-power-off w-5"></i> <span>Log Out</span>
+            </a>
+        </div>
     </div>
-  </section>  <!-- ================= ABOUT ================= -->  <section id="about" class="about">
-    <div class="about-grid">
-      <div class="fade-up">
-        <h2>Who We Are</h2>
-        <p>
-          Newage Onrender was built on a single principle: long‑term capital growth is achieved
-          through disciplined strategy, transparent governance, and exposure to productive
-          economic assets. We operate across traditional and emerging markets, providing
-          structured investment access for both small enterprises and large corporations.
-        </p>
-        <p>
-          Our approach avoids speculation‑driven decisions. Instead, we focus on measurable
-          fundamentals, infrastructure demand, technological adoption, and responsible capital
-          deployment.
-        </p>
-      </div>
-      <div class="fade-up">
-        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Boardroom" />
-      </div>
-    </div>
-  </section>  
+</aside>
+    <!-- HEADER -->
+    <header class="sticky top-0 glass-header border-b border-slate-200 z-30 lg:ml-64">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center">
+                <button onclick="toggleSidebar()" class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg lg:hidden">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
+                </button>
+                <span class="ml-4 font-black text-slate-900 text-lg uppercase tracking-tight">Investment Marketplace</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex flex-col items-end leading-none">
+                    <span class="stat-label">Market Status</span>
+                    <span class="text-[10px] font-bold text-emerald-500">OPEN • LIVE DATA</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 text-white flex items-center justify-center font-bold text-xs">user</div>
+            </div>
+        </div>
+    </header>
 
-<!-- ================= AREAS ================= -->
-<img
-  src="https://i.ibb.co/gLq4j9Nn/original-1cb236c29f74df6ab812e1b3a89458d5.png"
-  alt="Image"
-  style="
-    width: 100vw;
-    max-width: 100vw;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
-  "
->
-  <section id="areas" class="areas">
-    <h2 class="fade-up">Core Investment Areas</h2>
-    <div class="area-grid">
-      <div class="area-card fade-up">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/hxWPtFPn/images-2026-02-03-T185737-378.jpg" alt="images 2026 02 03T185737 378" border="0"></a>
-        <h3>Stock & Equity Markets</h3>
-        <p>
-          Diversified exposure to publicly listed companies with strong balance sheets,
-          competitive advantages, and long‑term earnings potential across global markets.
-        </p>
-      </div>
-      <div class="area-card fade-up">
-<a href="https://ibb.co/kgXSj057"><img src="https://i.ibb.co/svqVnQbf/Screenshot-2022-09-19-172350.webp" alt="Screenshot-2022-09-19-172350" border="0"></a>
-        <h3>Infrastructure Investment</h3>
-        <p>
-          Capital allocation into transportation, utilities, industrial development, and
-          essential economic frameworks that support national and regional growth.
-        </p>
-      </div>
-      <div class="area-card fade-up">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/27ML0f9f/pngtree-financing-the-future-investments-in-renewable-energy-and-sustainability-image-16201646.jpg" alt="pngtree financing the future investments in renewable energy and sustainability image 16201646" border="0"></a>
-        <h3>Free Energy & Innovation</h3>
-        <p>
-          Strategic exposure to next‑generation energy research, efficiency technologies,
-          renewable systems, and supporting industrial ecosystems.
-        </p>
-      </div>
-      <div class="area-card fade-up">
-<a href="https://ibb.co/jPV7cRDj"><img src="https://i.ibb.co/tTZy7XD1/Asset-management-system.jpg" alt="Asset-management-system" border="0"></a>
-        <h3>Asset Management</h3>
-        <p>
-          Structured portfolio oversight, risk balancing, capital preservation strategies,
-          and long‑term growth planning tailored to corporate needs.
-        </p>
-      </div>
-      <div class="area-card fade-up">
-<a href="https://ibb.co/Nn6T11K7"><img src="https://i.ibb.co/S7XfQQBJ/images-2026-02-03-T185710-531.jpg" alt="images-2026-02-03-T185710-531" border="0"></a>
-        <h3>Crypto & Digital Assets</h3>
-        <p>
-          Regulated, research‑driven exposure to blockchain infrastructure, digital assets,
-          and tokenized economic models within defined risk frameworks.
-        </p>
-      </div>
-    </div>
-  </section>  <!-- ================= PARALLAX ================= -->  <section class="parallax">
-    <div class="parallax-content fade-up">
-      <h2>Infrastructure Shapes Economies</h2>
-      <p>
-        From energy grids to logistics corridors, infrastructure investments provide the
-        foundation upon which productivity, innovation, and economic stability are built.
-      </p>
-    </div>
-  </section>  <!-- ================= ASSETS ================= -->  <section id="assets" class="assets">
-    <h2 class="fade-up">Our Asset Management Philosophy</h2>
-    <div class="timeline">
-      <div class="timeline-item fade-up">
-        <h4>Risk Identification</h4>
-        <p>
-          Continuous assessment of market, operational, and structural risks to preserve
-          invested capital.
-        </p>
-      </div>
-      <div class="timeline-item fade-up">
-        <h4>Strategic Allocation</h4>
-        <p>
-          Balanced exposure across asset classes to manage volatility and capture growth.
-        </p>
-      </div>
-      <div class="timeline-item fade-up">
-        <h4>Performance Monitoring</h4>
-        <p>
-          Transparent reporting frameworks aligned with institutional standards.
-        </p>
-      </div>
-    </div>
-  </section>  <!-- ================= CRYPTO ================= -->  <section id="crypto" class="crypto">
-    <h2 class="fade-up">Digital Asset Integration</h2>
-    <div class="crypto-grid">
-      <div class="fade-up">
-        <p>
-          Digital assets represent a developing financial layer that complements traditional
-          markets. Our approach emphasizes infrastructure, security, and regulatory awareness
-          rather than speculative trading.
-        </p>
-      </div>
-      <div class="fade-up">
-        <p>
-          Exposure is structured, limited, and aligned with long‑term technological adoption
-          trends, ensuring responsible participation in the digital economy.
-        </p>
-      </div>
-    </div>
-  </section>  <!-- ================= CTA ================= -->  <section id="contact" class="cta">
-    <h2>Partner With Newage Onrender</h2>
-    <p>
-      Whether you are a growing enterprise or an established corporation, our investment
-      framework is designed to support sustainable financial expansion.
-    </p>
-    <a href="#" class="btn">Request Consultation</a>
-  </section>  <!-- ================= FOOTER ================= -->  <footer>
-    <div class="footer-grid">
-      <div>
-        <h4>Newage Onrender</h4>
-        <p>
-          Institutional investment strategies for a changing global economy.
-        </p>
-      </div>
-      <div>
-        <h4>Investments</h4>
-        <p>Equities<br>Infrastructure<br>Energy Innovation<br>Digital Assets</p>
-      </div>
+    <!-- MAIN CONTENT -->
+    <div class="lg:ml-64 min-h-screen pb-20">
+        <main class="max-w-7xl mx-auto p-4 md:p-8">
+
+            <!-- HERO SECTION -->
+            <div class="mb-10 p-10 rounded-[3rem] feature-gradient text-white relative overflow-hidden shadow-2xl shadow-indigo-200">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Premium Opportunities</span>
+                    <h1 class="text-4xl md:text-5xl font-black mt-4 leading-tight">Diversify into <br><span class="text-indigo-200 italic">Tomorrow's Capital.</span></h1>
+                    <p class="mt-4 text-indigo-100 text-sm max-w-md">Access verified institutional grade investments across high-yield crypto markets, global infrastructure, and sustainable energy projects.</p>
+                </div>
+                <i class="fa-solid fa-vault absolute right-[-20px] bottom-[-20px] text-[15rem] opacity-10 rotate-12"></i>
+            </div>
+
+            <!-- FILTER TABS -->
+            <div class="flex flex-wrap gap-2 mb-10 overflow-x-auto pb-2">
+                <button class="px-6 py-2.5 bg-indigo-600 text-white text-xs font-black rounded-full shadow-lg shadow-indigo-100 uppercase">All Assets</button>
+                <button class="px-6 py-2.5 bg-white text-slate-500 text-xs font-black rounded-full border border-slate-200 hover:border-indigo-300 transition uppercase">Equities</button>
+                <button class="px-6 py-2.5 bg-white text-slate-500 text-xs font-black rounded-full border border-slate-200 hover:border-indigo-300 transition uppercase">Digital Assets</button>
+                <button class="px-6 py-2.5 bg-white text-slate-500 text-xs font-black rounded-full border border-slate-200 hover:border-indigo-300 transition uppercase">Energy & Infrastructure</button>
+            </div>
+
+            <!-- INVESTMENT GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                
+                <!-- FEATURED 1: CRYPTO -->
+                <div class="investment-card bg-white rounded-[2.5rem] border border-slate-200 p-8 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-6 right-6">
+                        <span class="bg-indigo-50 text-indigo-600 text-[10px] font-black px-3 py-1 rounded-full uppercase">Top Featured</span>
+                    </div>
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6">
+                        <i class="fa-solid fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900">Multi-Asset Crypto Fund</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">High-frequency algorithmic trading targeting top 20 crypto assets by market cap.</p>
+                    
+                    <div class="grid grid-cols-2 gap-y-6 mt-8">
+                        <div><p class="stat-label">Min. Investment</p><p class="text-sm font-black">$500</p></div>
+                        <div><p class="stat-label">Expected ROI</p><p class="text-sm font-black text-emerald-500">22.4% APR</p></div>
+                        <div><p class="stat-label">Risk Profile</p><p class="text-sm font-black text-orange-500">MODERATE</p></div>
+                        <div><p class="stat-label">Liquidity</p><p class="text-sm font-black uppercase">Instant (24h)</p></div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="stat-label">Total Developed</span>
+                            <span class="text-sm font-black">$128.4M</span>
+                        </div>
+                        <div class="flex -space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-slate-200 border-2 border-white"></div>
+                            <div class="w-7 h-7 rounded-full bg-slate-300 border-2 border-white"></div>
+                            <span class="text-[10px] font-bold text-slate-400 pl-4">+4,200 Investors</span>
+                        </div>
+                    </div>
+                    <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+                </div>
+
+                <!-- FEATURED 2: FREE ENERGY -->
+                <div class="investment-card bg-white rounded-[2.5rem] border border-slate-200 p-8 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-6 right-6">
+                        <span class="bg-emerald-50 text-emerald-600 text-[10px] font-black px-3 py-1 rounded-full uppercase">Sustainable</span>
+                    </div>
+                    <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6">
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900">Solar Grid Infrastructure</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Direct equity in emerging solar farm developments across South East Asia and Europe.</p>
+                    
+                    <div class="grid grid-cols-2 gap-y-6 mt-8">
+                        <div><p class="stat-label">Min. Investment</p><p class="text-sm font-black">$5,000</p></div>
+                        <div><p class="stat-label">Expected ROI</p><p class="text-sm font-black text-emerald-500">14.8% APR</p></div>
+                        <div><p class="stat-label">Risk Profile</p><p class="text-sm font-black text-emerald-500">LOW</p></div>
+                        <div><p class="stat-label">Liquidity</p><p class="text-sm font-black uppercase">Monthly</p></div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="stat-label">Total Developed</span>
+                            <span class="text-sm font-black">$450.0M</span>
+                        </div>
+                        <div class="flex -space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-slate-200 border-2 border-white"></div>
+                            <div class="w-7 h-7 rounded-full bg-slate-300 border-2 border-white"></div>
+                            <span class="text-[10px] font-bold text-slate-400 pl-4">+1,850 Investors</span>
+                        </div>
+                    </div>
+                     <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+                </div>
+
+                <!-- 3: GLOBAL STOCKS -->
+                <div class="investment-card bg-white rounded-[2.5rem] border border-slate-200 p-8 transition-all duration-300 relative">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+                        <i class="fa-solid fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900">Blue-Chip Equity Index</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Managed exposure to top-tier S&P 500 tech stocks and global manufacturing giants.</p>
+                    
+                    <div class="grid grid-cols-2 gap-y-6 mt-8">
+                        <div><p class="stat-label">Min. Investment</p><p class="text-sm font-black">$1,000</p></div>
+                        <div><p class="stat-label">Expected ROI</p><p class="text-sm font-black text-emerald-500">11.2% APR</p></div>
+                        <div><p class="stat-label">Risk Profile</p><p class="text-sm font-black text-emerald-500">LOW</p></div>
+                        <div><p class="stat-label">Liquidity</p><p class="text-sm font-black uppercase">Daily</p></div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="stat-label">Total Developed</span>
+                            <span class="text-sm font-black">$1.2B</span>
+                        </div>
+                        <div class="flex -space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-slate-200 border-2 border-white"></div>
+                            <div class="w-7 h-7 rounded-full bg-slate-300 border-2 border-white"></div>
+                            <span class="text-[10px] font-bold text-slate-400 pl-4">+12,000 Investors</span>
+                        </div>
+                    </div>
+                     <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+                </div>
+
+                <!-- 4: INFRASTRUCTURE -->
+                <div class="investment-card bg-white rounded-[2.5rem] border border-slate-200 p-8 transition-all duration-300 relative">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
+                        <i class="fa-solid fa-bridge text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900">Global Logistics Hubs</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Commercial real estate and transit hubs across key European trade routes.</p>
+                    
+                    <div class="grid grid-cols-2 gap-y-6 mt-8">
+                        <div><p class="stat-label">Min. Investment</p><p class="text-sm font-black">$10,000</p></div>
+                        <div><p class="stat-label">Expected ROI</p><p class="text-sm font-black text-emerald-500">9.5% APR</p></div>
+                        <div><p class="stat-label">Risk Profile</p><p class="text-sm font-black text-emerald-500">MINIMAL</p></div>
+                        <div><p class="stat-label">Liquidity</p><p class="text-sm font-black uppercase">Quarterly</p></div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="stat-label">Total Developed</span>
+                            <span class="text-sm font-black">$890.0M</span>
+                        </div>
+                        <div class="flex -space-x-2">
+                            <div class="w-7 h-7 rounded-full bg-slate-200 border-2 border-white"></div>
+                            <span class="text-[10px] font-bold text-slate-400 pl-4">+950 Investors</span>
+                        </div>
+                    </div>
+                    <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+                </div>
+
+            </div>
+
+<!-- INVESTMENT PLANS GRID (FIXED ALIGNMENT & SPACING) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center py-10">
     
+    <!-- PLAN 1: RETAIL PLUS (EMERALD THEME) -->
+    <div class="glass-card p-8 rounded-[3rem] border-2 border-emerald-500/20 relative overflow-hidden bg-gradient-to-br from-slate-900 to-emerald-950/30 transition-all hover:border-emerald-500/40">
+        <p class="text-[10px] font-black text-emerald-400 uppercase tracking-[0.3em] mb-4">Starter Tier</p>
+        <h3 class="text-2xl font-extrabold mb-1 text-white">Retail Plus</h3>
+        
+        <div class="mt-4 flex items-baseline space-x-2">
+            <p class="text-4xl font-black text-white">8.5%</p>
+            <span class="text-xs text-slate-400 font-bold uppercase tracking-widest">ROI / Month</span>
+        </div>
+
+        <ul class="mt-8 space-y-4 text-sm text-slate-300">
+            <li class="flex items-center">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-[10px] text-emerald-400"></i>
+                </div>
+                <span>Min: <b class="text-white">$100.00</b></span>
+            </li>
+            <li class="flex items-center">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-[10px] text-emerald-400"></i>
+                </div>
+                <span>Max: <b class="text-white">$10,000.00</b></span>
+            </li>
+            <li class="flex items-center">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-[10px] text-emerald-400"></i>
+                </div>
+                <span>24/7 Liquidity</span>
+            </li>
+        </ul>
+
+         <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
     </div>
-   
-  </footer>  <!-- ================= JS ================= -->  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script><!-- ================= EXTENDED CONTENT: INSTITUTIONAL EXPANSION ================= --><section class="about">
-  <h2>Institutional Investment Framework</h2>
-  <p>
-    Newage Onrender operates on a long-horizon institutional framework designed for companies
-    that prioritize capital preservation, disciplined growth, and governance-driven decision
-    making. Unlike retail-focused platforms, our structure emphasizes balance-sheet strength,
-    macroeconomic alignment, and sustainable deployment of capital across productive sectors
-    of the global economy.
-  </p>
-  <p>
-    Our investment philosophy is rooted in the belief that real economic value is created when
-    capital is allocated toward assets that generate measurable output, long-term utility,
-    and systemic resilience. This includes equities tied to real productivity, infrastructure
-    that underpins commerce, energy systems that sustain industrial growth, and carefully
-    structured exposure to emerging digital financial layers.
-  </p>
-</section><section class="areas">
-  <h2>Corporate Stock & Equity Strategy</h2>
-  <p>
-    Equity investments form a foundational pillar of the Newage Onrender portfolio framework.
-    We focus on companies with demonstrable earnings capacity, defensible market positioning,
-    and governance standards aligned with long-term shareholder value. Equity exposure is
-    diversified across sectors, geographies, and capitalization tiers to manage volatility
-    while maintaining upside participation.
-  </p>
-  <p>
-    For corporate partners, equity investment is not approached as speculative trading but as
-    structured ownership in productive enterprises. This includes dividend-generating assets,
-    growth-oriented firms, and strategic sector leaders that benefit from structural economic
-    trends such as digitization, infrastructure renewal, and energy transition.
-  </p>
-</section><section class="assets">
-  <h2>Enterprise Asset Management Model</h2>
-  <p>
-    Asset management at Newage Onrender is governed by clearly defined mandates, risk tolerance
-    thresholds, and reporting transparency. Each portfolio is constructed with explicit
-    objectives, whether capital preservation, income generation, or long-term appreciation.
-  </p>
-  <p>
-    Risk management is embedded at every stage of the investment lifecycle. This includes
-    diversification controls, liquidity monitoring, counterparty assessment, and scenario
-    analysis designed to stress-test portfolios against adverse market conditions.
-  </p>
-</section><section class="crypto">
-  <h2>Digital Assets & Blockchain Infrastructure</h2>
-  <p>
-    Digital assets are integrated into the Newage Onrender ecosystem as a complementary
-    financial layer rather than a replacement for traditional markets. Exposure is focused on
-    infrastructure-level blockchain systems, custody solutions, and protocol ecosystems that
-    demonstrate real-world utility and institutional adoption.
-  </p>
-  <p>
-    Participation in digital assets is governed by regulatory awareness, security standards,
-    and conservative allocation limits. This ensures that corporate capital is not exposed to
-    unmanaged volatility or speculative risk profiles.
-  </p>
-</section><section class="cta">
-  <h2>Legal, Governance & Compliance Overview</h2>
-  <p>
-    Newage Onrender operates under strict internal governance policies designed to align with
-    global best practices in investment management. All investment activities are subject to
-    internal review, compliance assessment, and disclosure standards appropriate to the
-    jurisdiction of operation.
-  </p>
-  <p>
-    Nothing on this platform constitutes an offer or solicitation to invest. All investment
-    decisions carry risk, including potential loss of capital. Corporate partners are
-    encouraged to conduct independent due diligence and consult professional advisors before
-    engaging in any investment activity.
-  </p>
-</section><footer>
+    <!-- PLAN 2: PROFESSIONAL (ELECTRIC INDIGO - FEATURED) -->
+    <div class="glass-card p-10 rounded-[3rem] border-2 border-indigo-400/40 relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-950 shadow-[0_20px_60px_-15px_rgba(79,70,229,0.4)] transform lg:scale-110 z-10">
+        <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-600 to-blue-500 text-white text-[9px] font-black px-6 py-2 rounded-bl-3xl uppercase tracking-widest shadow-lg">
+            Recommended
+        </div>
 
-<style>
-.learn-more{
-  text-align:center;
-  padding:15px;
-  background:#111;
-  color:#fff;
-  font-size:14px;
-  letter-spacing:.5px;
-}
+        <p class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em] mb-4">Growth Tier</p>
+        <h3 class="text-3xl font-extrabold mb-1 text-white">Professional</h3>
+        
+        <div class="mt-4 flex items-baseline space-x-2">
+            <p class="text-5xl font-black text-white">15.2%</p>
+            <span class="text-xs text-indigo-300/60 font-bold uppercase tracking-widest">ROI / Month</span>
+        </div>
 
-.footer{
-  text-align:center;
-  padding:60px 20px;
-  background:#000;
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:30px;
-}
+        <ul class="mt-8 space-y-4 text-sm text-slate-200">
+            <li class="flex items-center">
+                <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-xs text-indigo-400"></i>
+                </div>
+                <span>Min: <b class="text-white">$5,000.00</b></span>
+            </li>
+            <li class="flex items-center">
+                <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-xs text-indigo-400"></i>
+                </div>
+                <span>Dedicated Manager</span>
+            </li>
+            <li class="flex items-center">
+                <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center mr-3">
+                    <i class="fa-solid fa-check text-xs text-indigo-400"></i>
+                </div>
+                <span>Weekly Briefings</span>
+            </li>
+        </ul>
 
-.footer h3{
-  font-size:28px;
-  font-weight:700;
-}
+        <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+    </div>
 
-.footer p{
-  max-width:600px;
-  line-height:1.6;
-  opacity:.9;
-}
+    <!-- PLAN 3: INSTITUTIONAL (ROYAL FUCHSIA) -->
+    <div class="glass-card p-8 rounded-[3rem] border-2 border-fuchsia-500/30 relative overflow-hidden bg-gradient-to-br from-indigo-950 via-slate-900 to-fuchsia-950/40">
+        <p class="text-[10px] font-black text-fuchsia-400 uppercase tracking-[0.3em] mb-4">Elite Tier</p>
+        <h3 class="text-2xl font-extrabold mb-1 text-white">Institutional</h3>
+        
+        <div class="mt-4 flex items-baseline space-x-2">
+            <p class="text-4xl font-black bg-gradient-to-r from-white via-indigo-200 to-fuchsia-300 bg-clip-text text-transparent">24.0%</p>
+            <span class="text-xs text-slate-400 font-bold uppercase tracking-widest">ROI / Month</span>
+        </div>
 
-.social-icons{
-  display:flex;
-  gap:15px;
-  font-size:18px;
-}
+        <ul class="mt-8 space-y-4 text-sm text-slate-300">
+            <li class="flex items-center">
+                <i class="fa-solid fa-shield-check text-fuchsia-500 mr-3 text-lg"></i> 
+                <span>Min: <b class="text-white">$10,000</b></span>
+            </li>
+            <li class="flex items-center">
+                <i class="fa-solid fa-shield-check text-fuchsia-500 mr-3 text-lg"></i> 
+                <span>Legal Protection Fund</span>
+            </li>
+            <li class="flex items-center">
+                <i class="fa-solid fa-shield-check text-fuchsia-500 mr-3 text-lg"></i> 
+                <span>Priority Queuing</span>
+            </li>
+        </ul>
 
-.footer-links{
-  text-align:center;
-}
+        <a href="https://newagefunding.onrender.com" target="_blank" rel="noopener noreferrer">
+  <button class="w-full mt-8 py-4 bg-slate-900 text-white text-xs font-black uppercase rounded-2xl hover:bg-indigo-600 transition">
+    Activate plan
+  </button>
+</a>
+    </div>
 
-.footer-links h4{
-  margin-bottom:15px;
-  letter-spacing:1px;
-}
-
-.footer-links ul{
-  list-style:none;
-  padding:0;
-}
-
-.footer-links li{
-  margin-bottom:10px;
-  opacity:.85;
-}
-</style>
-
-<!-- LEARN MORE BAR -->
-<div class="learn-more">
-  Learn more &nbsp; › iShares &nbsp; › Aladdin
 </div>
 
-<!-- BEAUTIFUL FOOTER -->
-<footer style="background:#111; color:#fff; padding:80px 8%; position:relative; font-family:'Inter', sans-serif;">
+            <!-- TESTIMONIALS SECTION -->
+            <div class="mt-24">
+                <p class="text-center stat-label mb-10">Trusted by Global Capitalists</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200">
+                        <div class="flex text-indigo-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs italic text-slate-600 leading-relaxed">"The algorithmic crypto fund at Newage has outperformed my traditional hedge fund benchmarks for three quarters straight. Absolute professional transparency."</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-300"></div>
+                            <div>
+                                <p class="text-xs font-black">Marcus V. Thorne</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">Private Family Office</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200">
+                        <div class="flex text-indigo-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs italic text-slate-600 leading-relaxed">"Investing in the Solar Grid project was seamless. The quarterly liquidity reports and blockchain-verified entries give me peace of mind."</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-300"></div>
+                            <div>
+                                <p class="text-xs font-black">Elena Rodriguez</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">Institutional Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200">
+                        <div class="flex text-indigo-500 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs italic text-slate-600 leading-relaxed">"Newage provides the diversification I couldn't find in traditional retail platforms. Their infrastructure bonds are a core part of my portfolio."</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-300"></div>
+                            <div>
+                                <p class="text-xs font-black">Dr. Chen Wei</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">Venture Capitalist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Company Info -->
-  <div style="text-align:center; max-width:800px; margin:0 auto 40px;">
-    <h3 style="font-size:28px; font-weight:900; margin-bottom:15px;">Newage Onrender</h3>
-    <p style="font-size:16px; line-height:1.7; opacity:0.85;">
-      As a global investment manager and fiduciary to our clients, our purpose
-      is to help everyone experience financial well-being. Since 1999, we’ve
-      been a leading provider of financial technology.
-    </p>
-  </div>
+            <!-- DISCLAIMER -->
+            <div class="mt-20 p-8 bg-white rounded-3xl border border-slate-200">
+                <h6 class="text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest">Risk Disclosure & Compliance</h6>
+                <p class="text-[10px] text-slate-400 leading-relaxed uppercase font-bold">
+                    Past performance is not indicative of future results. All investments involve risk, including the loss of principal. Infrastructure and Energy projects may have extended lock-up periods. Newage Asset Management is an ISO 27001 certified firm. Please consult with a financial advisor before committing capital.
+                </p>
+            </div>
 
-  <!-- Social Icons -->
-  <div class="social-icons" style="display:flex; justify-content:center; gap:25px; margin-bottom:50px;">
-    <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram fa-2x"></i>
-    </a>
-    <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook">
-      <i class="fab fa-facebook fa-2x"></i>
-    </a>
-    <a href="https://x.com/yourhandle" target="_blank" aria-label="X">
-      <i class="fab fa-x fa-2x"></i>
-    </a>
-    <a href="https://linkedin.com/company/yourcompany" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-  </div>
-
-  <!-- Links Columns -->
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:80px; margin-bottom:40px;">
-    <div style="min-width:180px;">
-      <h4 style="font-size:16px; font-weight:700; margin-bottom:15px;">CORPORATE</h4>
-      <ul style="list-style:none; padding:0; margin:0; line-height:1.8; opacity:0.85;">
-        <li>Fraud protection tips</li>
-        <li>Careers</li>
-        <li>Newsroom</li>
-        <li>Investor relations</li>
-        <li>Contact us</li>
-        <li>Accessibility</li>
-        <li>Responsible Disclosure</li>
-      </ul>
+        </main>
     </div>
 
-    <div style="min-width:180px;">
-      <h4 style="font-size:16px; font-weight:700; margin-bottom:15px;">LEGAL</h4>
-      <ul style="list-style:none; padding:0; margin:0; line-height:1.8; opacity:0.85;">
-        <li>Terms & conditions</li>
-        <li>Privacy Notice</li>
-        <li>Business continuity</li>
-        <li>FINRA BrokerCheck</li>
-        <li>Rule 606 Disclosure</li>
-        <li>Cookie Notice</li>
-        <li>Manage Cookies</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Risk Disclaimer -->
-  <p style="font-size:0.9rem; color:#888; max-width:700px; margin:0 auto 30px; text-align:center; line-height:1.6;">
-    ⚠️ Investment involves risks, including possible loss of principal. Past performance is not indicative of future results. Always do your own research or consult a financial advisor before investing.
-  </p>
-
-  <!-- Copyright -->
-  <p style="font-size:0.85rem; color:#555; text-align:center;">
-    &copy; 2024 Newage Onrender. All rights reserved.
-  </p>
-
-</footer>
-
-<!-- FONT AWESOME CDN -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  rel="stylesheet"
-/>
-
-<!-- SOCIAL ICON STYLES -->
-<style>
-  .social-icons a {
-    color: #fff;
-    transition: all 0.3s ease;
-  }
-  .social-icons a:hover {
-    color: #007bff;
-    transform: scale(1.3);
-  }
-  .social-icons .fa-2x {
-    font-size: 2rem;
-  }
-</style>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('sidebar-closed');
+            document.getElementById('sidebar').classList.toggle('sidebar-open');
+            document.getElementById('overlay').classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
